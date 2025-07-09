@@ -23,26 +23,130 @@ The Living Theory of Change platform visualizes knowledge as a living organism t
 
 - **Frontend**: React + TypeScript
 - **Backend**: Supabase (PostgreSQL + Auth + Realtime)
-- **AI Integration**: OpenAI API with pgvector
+- **AI Integration**: OpenAI API with pgvector (Claude ready)
 - **Testing**: Vitest + React Testing Library
 - **UI**: Radix UI + Tailwind CSS
-
-## Development Approach
-
-This project follows a test-driven development approach with:
-- User stories as the foundation for all features
-- 80% test pass threshold for progression
-- Modular architecture with clear input/output contracts
-- Real data usage after Supabase integration
-- AI self-testing capabilities
+- **Monorepo**: Turborepo
 
 ## Getting Started
 
-*Coming soon - Initial development phase in progress*
+### Prerequisites
+
+- Node.js 18+ and npm 9+
+- Supabase CLI
+- Git
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/villagaiaimpacthub/LTOC.git
+cd LTOC
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+# Edit .env.local with your values
+```
+
+4. Start Supabase locally:
+```bash
+npx supabase start
+```
+
+5. Run database migrations:
+```bash
+npm run db:migrate
+```
+
+6. Seed the database (optional):
+```bash
+npm run db:seed
+```
+
+7. Start the development server:
+```bash
+npm run dev
+```
+
+Visit http://localhost:3000 to see the application.
+
+## Project Structure
+
+```
+LTOC/
+├── apps/
+│   └── web/                 # Next.js frontend application
+├── packages/
+│   ├── database/           # Supabase client and types
+│   ├── ui/                 # Shared UI components
+│   └── utils/              # Shared utilities and AI abstraction
+├── supabase/
+│   ├── migrations/         # Database migrations
+│   ├── functions/          # Edge functions
+│   └── seed.sql           # Mock data for development
+└── docs/                   # Project documentation
+```
+
+## Development Workflow
+
+### Branching Strategy
+
+- `main` - Production branch (protected)
+- `develop` - Integration branch
+- `feature/*` - Feature branches
+
+### Creating a Feature
+
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/your-feature-name
+```
+
+### Testing
+
+Run tests before committing:
+```bash
+npm run test
+```
+
+### Committing Changes
+
+The project uses conventional commits. Examples:
+- `feat: add user authentication`
+- `fix: resolve content loading issue`
+- `docs: update setup instructions`
+
+## Key Architectural Decisions
+
+1. **Multi-tenancy**: Organizations isolate data
+2. **Soft Deletes**: Data recovery and GDPR compliance
+3. **Role-Based Access**: Admin, Contributor, Reader
+4. **AI Abstraction**: Easy switching between providers
+5. **Test-Driven**: 80% pass threshold for deployment
+
+## Environment Variables
+
+Key variables to configure:
+
+- `NEXT_PUBLIC_SUPABASE_URL` - Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Supabase anonymous key
+- `OPENAI_API_KEY` - For AI features (or future `ANTHROPIC_API_KEY`)
+- `GOOGLE_CLIENT_ID/SECRET` - For Google OAuth
+- `LINKEDIN_CLIENT_ID/SECRET` - For LinkedIn OAuth
+
+See `.env.example` for the complete list.
 
 ## Contributing
 
-*Contribution guidelines will be added as the project develops*
+Please read the [Technical Implementation Companion](docs/living_theory_technical_companion.md) for development guidelines and testing requirements.
 
 ## License
 
