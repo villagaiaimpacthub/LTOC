@@ -5,19 +5,9 @@
   "installCommand": "pnpm install",
   "regions": ["iad1"],
   "functions": {
-    "apps/web/src/app/api/**/*.ts": {
+    "apps/web/app/api/**/*.ts": {
       "maxDuration": 30
     }
-  },
-  "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-    "OPENAI_API_KEY": "@openai_api_key",
-    "ANTHROPIC_API_KEY": "@anthropic_api_key",
-    "AI_PROVIDER": "@ai_provider",
-    "DATABASE_URL": "@database_url",
-    "SESSION_SECRET": "@session_secret"
   },
   "headers": [
     {
