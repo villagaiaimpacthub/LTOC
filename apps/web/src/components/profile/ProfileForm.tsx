@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { 
-  User, MapPin, Globe, Linkedin, Twitter, 
+  User, MapPin, Globe, Linkedin, Twitter, Github,
   Camera, Save, Plus, X, Briefcase, Award 
 } from 'lucide-react'
 import { Button } from '@ltoc/ui'
@@ -19,6 +19,7 @@ const profileSchema = z.object({
   website: z.string().url('Must be a valid URL').optional().or(z.literal('')),
   linkedin_url: z.string().url('Must be a valid URL').optional().or(z.literal('')),
   twitter_handle: z.string().regex(/^@?[\w]{1,15}$/, 'Invalid Twitter handle').optional().or(z.literal('')),
+  github_url: z.string().url('Must be a valid URL').optional().or(z.literal('')),
   skills: z.array(z.string()).max(10, 'Maximum 10 skills'),
   interests: z.array(z.string()).max(10, 'Maximum 10 interests'),
   is_public: z.boolean(),
@@ -55,6 +56,7 @@ export function ProfileForm({ user, onUpdate }: ProfileFormProps) {
       website: user?.website || '',
       linkedin_url: user?.linkedin_url || '',
       twitter_handle: user?.twitter_handle || '',
+      github_url: user?.github_url || '',
       skills: user?.skills || [],
       interests: user?.interests || [],
       is_public: user?.is_public ?? true,
@@ -280,6 +282,22 @@ export function ProfileForm({ user, onUpdate }: ProfileFormProps) {
               />
             </div>
           </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-2">GitHub</label>
+          <div className="relative">
+            <Github className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+            <input
+              {...register('github_url')}
+              type="url"
+              placeholder="https://github.com/username"
+              className="w-full pl-10 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          {errors.github_url && (
+            <p className="text-red-500 text-sm mt-1">{errors.github_url.message}</p>
+          )}
         </div>
       </div>
 

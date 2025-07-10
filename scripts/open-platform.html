@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTOC Platform Launcher</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background: #e8e3dd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #254956;
+            margin-bottom: 10px;
+        }
+        .status {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions {
+            text-align: left;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #406B63;
+            margin-top: 0;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+        code {
+            background: #e8e3dd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .button {
+            background: #B79277;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: opacity 0.2s;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 LTOC Platform</h1>
+        <p>Your platform is ready but needs Node.js to run</p>
+        
+        <div class="status">
+            <h3>Quick Solution:</h3>
+            <p>Since Node.js isn't installed on Windows, let's use WSL directly.</p>
+        </div>
+
+        <div class="instructions">
+            <h3>Option 1: Install Node.js on Windows (Recommended)</h3>
+            <ol>
+                <li>Download Node.js from: <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
+                <li>Install it (choose LTS version)</li>
+                <li>Restart Command Prompt</li>
+                <li>Navigate to: <code>C:\Users\julia\DEV\LTOC\scripts\functional-platform</code></li>
+                <li>Run: <code>npm run dev</code></li>
+                <li>Open: <a href="http://localhost:3000">http://localhost:3000</a></li>
+            </ol>
+        </div>
+
+        <div class="instructions">
+            <h3>Option 2: Keep using WSL (Current Setup)</h3>
+            <p>The server is already running in WSL. To make it accessible:</p>
+            <ol>
+                <li>In WSL terminal, run:<br>
+                    <code>cd /mnt/c/Users/julia/DEV/LTOC/scripts/functional-platform</code></li>
+                <li>Then run:<br>
+                    <code>npx next dev -H 0.0.0.0</code></li>
+                <li>Note the IP address shown</li>
+                <li>Try accessing:<br>
+                    <code>http://localhost:3000</code> or <code>http://[WSL-IP]:3000</code></li>
+            </ol>
+        </div>
+
+        <div class="instructions">
+            <h3>What's in your platform:</h3>
+            <ul style="text-align: left;">
+                <li>✅ User profiles with avatars and recognition system</li>
+                <li>✅ Theory creation with markdown editor</li>
+                <li>✅ Dashboard with stats and activity tracking</li>
+                <li>✅ Collaboration features</li>
+                <li>✅ All navigation and buttons are functional</li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 30px;">
+            <strong>Need the simplest solution?</strong><br>
+            Install Node.js on Windows (Option 1) - it takes just 2 minutes!
+        </p>
+    </div>
+</body>
+</html>

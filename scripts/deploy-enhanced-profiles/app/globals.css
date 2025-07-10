@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #e8e3dd;
+  --foreground: #2D2928;
+  --card: #ffffff;
+  --card-foreground: #2D2928;
+  --primary: #B79277;
+  --primary-foreground: #ffffff;
+  --secondary: #406B63;
+  --secondary-foreground: #ffffff;
+  --muted: #949FAB;
+  --muted-foreground: #2D2928;
+  --accent: #254956;
+  --accent-foreground: #ffffff;
+  --destructive: #8C1352;
+  --destructive-foreground: #ffffff;
+  --border: #2D2928;
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.profile-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.social-link {
+  transition: all 0.2s ease;
+  color: var(--accent);
+}
+
+.social-link:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.knowledge-item {
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: all 0.2s ease;
+}
+
+.knowledge-item:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.list-disc li::marker {
+  color: var(--primary);
+}

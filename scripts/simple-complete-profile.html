@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTOC Platform - Complete Profile Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #B79277;
+            --secondary: #406B63;
+            --muted: #949FAB;
+            --accent: #254956;
+            --background: #e8e3dd;
+            --card: #ffffff;
+        }
+        body {
+            background-color: var(--background);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .profile-card {
+            background: var(--card);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .profile-card:hover {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .social-link {
+            color: #254956;
+            transition: all 0.2s ease;
+        }
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .knowledge-item {
+            border: 1px solid #e5e7eb;
+            background: var(--card);
+            transition: all 0.2s ease;
+        }
+        .knowledge-item:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i data-lucide="sparkles" class="w-8 h-8 mr-2" style="color: #254956"></i>
+                    <h1 class="text-xl font-bold">LTOC Platform</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#dashboard" class="flex items-center space-x-2 hover:opacity-80">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" 
+                             alt="Sarah Anderson" class="w-8 h-8 rounded-full object-cover">
+                        <span class="font-medium">Sarah Anderson</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="p-8" style="display: none;">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-8 flex items-center gap-4">
+                <a href="#profile" class="flex items-center gap-4 hover:opacity-80">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop" 
+                         alt="Sarah Anderson" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <h1 class="text-3xl font-bold">Welcome back, Sarah Anderson!</h1>
+                        <p class="text-gray-600">Here's what's happening with your theories today.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="profile-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="file-text" class="w-8 h-8" style="color: #254956"></i>
+                        <span class="text-sm font-medium" style="color: #254956">+3 this month</span>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">12</p>
+                    <p class="text-sm text-gray-600">Theories Created</p>
+                </div>
+                <div class="profile-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="users" class="w-8 h-8" style="color: #254956"></i>
+                        <span class="text-sm font-medium" style="color: #254956">+8 this month</span>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">48</p>
+                    <p class="text-sm text-gray-600">Collaborations</p>
+                </div>
+                <div class="profile-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="trending-up" class="w-8 h-8" style="color: #254956"></i>
+                        <span class="text-sm font-medium" style="color: #254956">+0.5 this month</span>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">9.2</p>
+                    <p class="text-sm text-gray-600">Impact Score</p>
+                </div>
+                <div class="profile-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="award" class="w-8 h-8" style="color: #254956"></i>
+                        <span class="text-sm font-medium" style="color: #254956">+5 this month</span>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">24</p>
+                    <p class="text-sm text-gray-600">Recognition</p>
+                </div>
+            </div>
+
+            <button onclick="showProfile()" class="btn-primary px-6 py-3 rounded-lg">
+                View Full Profile →
+            </button>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div id="profile" class="min-h-screen p-4 md:p-8">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <!-- Profile Header -->
+            <div class="profile-card p-6 md:p-8">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop" 
+                         alt="Sarah Anderson" class="w-32 h-32 rounded-full object-cover flex-shrink-0">
+                    <div class="flex-grow">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                            <div>
+                                <h1 class="text-2xl md:text-3xl font-bold mb-2">Sarah Anderson</h1>
+                                <p class="text-lg text-gray-600">AI Research Scientist | Data Ethics Advocate</p>
+                                <p class="flex items-center text-sm text-gray-500 mt-1">
+                                    <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                                    San Francisco, CA
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="btn-primary px-4 py-1.5 rounded-full flex items-center gap-1.5 text-sm">
+                                    <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+                                    Follow
+                                </button>
+                                <button class="btn-primary px-4 py-1.5 rounded-full flex items-center gap-1.5 text-sm">
+                                    <i data-lucide="link" class="w-3.5 h-3.5"></i>
+                                    Connect
+                                </button>
+                            </div>
+                        </div>
+                        <p class="mb-6">Leading research in ethical AI development with a focus on fairness and transparency. Published author and frequent speaker at international conferences.</p>
+                        <div class="flex gap-4 flex-wrap">
+                            <a href="#" class="social-link flex items-center gap-2">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link flex items-center gap-2">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link flex items-center gap-2">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="#" class="social-link flex items-center gap-2">
+                                <i data-lucide="globe" class="w-5 h-5"></i>
+                                <span>Website</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="profile-card p-6 md:p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                    About
+                </h2>
+                <div class="space-y-4">
+                    <p>With over a decade of experience in artificial intelligence and machine learning, I specialize in developing ethical AI solutions that prioritize fairness, transparency, and human-centered design. My research focuses on creating robust frameworks for evaluating and mitigating bias in machine learning models.</p>
+                    <p>Currently leading the Ethics in AI initiative at Tech Innovation Labs, where we're working on groundbreaking approaches to responsible AI development. Previously, I contributed to major projects at leading research institutions and tech companies.</p>
+                    <div class="pt-4">
+                        <h3 class="font-semibold mb-2">Highlights</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>PhD in Computer Science, Stanford University</li>
+                            <li>Published 20+ peer-reviewed papers in top AI conferences</li>
+                            <li>TEDx speaker on "The Future of Ethical AI"</li>
+                            <li>Advisory board member for AI Ethics Coalition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="profile-card p-6 md:p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i>
+                    Experience
+                </h2>
+                <div class="space-y-8">
+                    <!-- Current Job -->
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&h=100&fit=crop" 
+                             alt="Tech Innovation Labs" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg">Lead AI Ethics Researcher</h3>
+                            <p class="font-medium" style="color: var(--primary)">Tech Innovation Labs</p>
+                            <p class="text-sm text-gray-500 mb-2">Jan 2022 - Present · 2 yrs 3 mos</p>
+                            <p class="mb-4">Leading a team of researchers in developing ethical AI frameworks and guidelines. Spearheading initiatives in responsible AI development and implementation across multiple product lines.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">AI Ethics</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Team Leadership</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Research</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Travel -->
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=100&h=100&fit=crop" 
+                             alt="Research" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg">Independent Research & World Travel</h3>
+                            <p class="font-medium" style="color: var(--primary)">Self-Directed Study</p>
+                            <p class="text-sm text-gray-500 mb-2">Jan 2021 - Dec 2021 · 1 yr</p>
+                            <p class="mb-4">Conducted independent research while traveling through Asia and Europe, studying the cultural implications of AI adoption in different societies. Spent 3 months volunteering in the Amazon rainforest with indigenous communities, learning about traditional knowledge systems and their intersection with modern technology. Published "Cultural Perspectives on AI" in the International Journal of AI Ethics.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Cross-Cultural Research</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Field Work</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Writing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Work -->
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1559024094-4a1e4495c3c1?w=100&h=100&fit=crop" 
+                             alt="Code.org" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg">AI Education Volunteer</h3>
+                            <p class="font-medium" style="color: var(--primary)">Code.org</p>
+                            <p class="text-sm text-gray-500 mb-2">Sep 2020 - Present · 3 yrs 6 mos</p>
+                            <p class="mb-4">Teaching AI concepts to underprivileged high school students. Developed curriculum for introducing ethical AI concepts to teenagers, reaching over 500 students across 10 schools.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Education</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Curriculum Development</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Mentoring</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Caregiver -->
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center" style="background-color: rgba(183, 146, 119, 0.1)">
+                            <i data-lucide="heart" class="w-6 h-6" style="color: var(--primary)"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg">Family Caregiver</h3>
+                            <p class="font-medium" style="color: var(--primary)">Personal Care</p>
+                            <p class="text-sm text-gray-500 mb-2">Mar 2019 - Dec 2019 · 10 mos</p>
+                            <p class="mb-4">Took a career break to care for a family member with chronic illness. This experience deepened my understanding of healthcare AI applications and patient needs, inspiring my later work on AI accessibility.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Healthcare</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Patient Care</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Empathy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Previous Job -->
+                    <div class="flex gap-4">
+                        <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=100&h=100&fit=crop" 
+                             alt="AI Research Institute" class="w-12 h-12 rounded-full object-cover flex-shrink-0">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg">Senior AI Researcher</h3>
+                            <p class="font-medium" style="color: var(--primary)">AI Research Institute</p>
+                            <p class="text-sm text-gray-500 mb-2">Jun 2016 - Feb 2019 · 2 yrs 9 mos</p>
+                            <p class="mb-4">Led research projects in machine learning fairness and algorithmic bias. Published multiple papers in top-tier conferences including NeurIPS, ICML, and FAccT.</p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Research</span>
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm">Publications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Hub -->
+            <div class="profile-card p-6 md:p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    Knowledge Hub
+                </h2>
+                
+                <!-- Research Papers -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">Research Papers</h3>
+                    <div class="space-y-4">
+                        <div class="knowledge-item p-4 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-medium mb-2">Ethical Considerations in Machine Learning Models</h4>
+                                    <p class="text-sm text-gray-600">Published in AI Ethics Journal, 2023</p>
+                                </div>
+                                <i data-lucide="external-link" class="w-5 h-5 cursor-pointer"></i>
+                            </div>
+                        </div>
+                        <div class="knowledge-item p-4 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-medium mb-2">Cultural Perspectives on AI: Lessons from Global Communities</h4>
+                                    <p class="text-sm text-gray-600">International Journal of AI Ethics, 2021</p>
+                                </div>
+                                <i data-lucide="external-link" class="w-5 h-5 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presentations -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">Presentations</h3>
+                    <div class="space-y-4">
+                        <div class="knowledge-item p-4 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-medium mb-2">The Future of Ethical AI</h4>
+                                    <p class="text-sm text-gray-600">TEDx San Francisco, 2023</p>
+                                </div>
+                                <i data-lucide="external-link" class="w-5 h-5 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Featured Resources</h3>
+                    <div class="space-y-4">
+                        <div class="knowledge-item p-4 rounded-lg">
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="font-medium mb-2">AI Ethics Guidelines</h4>
+                                    <p class="text-sm text-gray-600">A comprehensive guide to ethical AI development</p>
+                                </div>
+                                <i data-lucide="link" class="w-5 h-5 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recognition Section -->
+            <div class="profile-card p-6 md:p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="award" class="w-5 h-5"></i>
+                    Recognition
+                </h2>
+                
+                <div class="space-y-4 mb-6">
+                    <!-- Recognition 1 -->
+                    <div class="border rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" 
+                                 alt="Dr. Emily Chen" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-grow">
+                                <p class="font-medium">Dr. Emily Chen</p>
+                                <p class="text-sm text-gray-500">Jan 15, 2024</p>
+                                <p class="mt-2">Sarah's work on AI ethics has been transformative for our industry. Her framework for bias detection has helped us build more equitable systems.</p>
+                                <div class="mt-3 pl-4 border-l-2" style="border-color: var(--primary)">
+                                    <p class="text-sm font-medium mb-1">Response:</p>
+                                    <p class="text-sm">Thank you so much, Emily! It's been a pleasure collaborating with your team.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recognition 2 -->
+                    <div class="border rounded-lg p-4">
+                        <div class="flex items-start gap-3">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop" 
+                                 alt="Maria Rodriguez" class="w-10 h-10 rounded-full object-cover">
+                            <div class="flex-grow">
+                                <p class="font-medium">Maria Rodriguez</p>
+                                <p class="text-sm text-gray-500">Jan 14, 2024</p>
+                                <p class="mt-2">I attended Sarah's workshop on ethical AI and it completely changed my perspective. Her ability to explain complex concepts in accessible ways is remarkable.</p>
+                                <button class="text-sm flex items-center gap-1 mt-3" style="color: #254956">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                    Respond
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full py-3 border-2 border-dashed border-gray-300 rounded-lg hover:border-opacity-50 transition-colors" style="color: #254956; border-color: #254956">
+                    Leave a note of recognition
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        function showDashboard() {
+            document.getElementById('profile').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        function showProfile() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('profile').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        // Show profile by default
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('profile').style.display = 'block';
+    </script>
+</body>
+</html>

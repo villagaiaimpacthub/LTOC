@@ -1,0 +1,39 @@
+🚀 HOW TO ACCESS YOUR LTOC PLATFORM
+===================================
+
+The server is running! To access it from Windows:
+
+OPTION 1 - Direct Windows Access (Easiest):
+------------------------------------------
+1. Open Windows Command Prompt (Win+R, type "cmd", press Enter)
+2. Navigate to your project:
+   cd C:\Users\julia\DEV\LTOC\scripts\functional-platform
+3. Run the server:
+   npm run dev
+4. Open browser to: http://localhost:3000
+
+OPTION 2 - WSL2 Localhost Forwarding:
+-------------------------------------
+WSL2 should automatically forward localhost. Try these URLs:
+- http://localhost:3000
+- http://127.0.0.1:3000
+
+OPTION 3 - Manual Port Forwarding:
+----------------------------------
+1. Find your WSL IP:
+   In WSL terminal: hostname -I
+2. In Windows PowerShell (Admin):
+   netsh interface portproxy add v4tov4 listenport=3000 listenaddress=0.0.0.0 connectport=3000 connectaddress=[YOUR_WSL_IP]
+3. Open: http://localhost:3000
+
+CURRENT STATUS:
+--------------
+✅ Platform is fully built with:
+   - User profiles with avatars
+   - Theory creation with markdown editor
+   - Dashboard with stats
+   - Working navigation
+   - All buttons functional
+
+If none of these work, the Windows Firewall might be blocking the connection.
+Try temporarily disabling it to test.
