@@ -9,19 +9,29 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "start": "turbo run start",
     "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
     "lint": "turbo run lint",
-    "clean": "turbo run clean",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:migrate": "cd supabase && supabase migration up",
+    "db:migrate": "cd supabase && supabase db push",
     "db:reset": "cd supabase && supabase db reset",
-    "db:seed": "cd supabase && supabase db seed"
+    "db:seed": "cd supabase && supabase db seed",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "echo 'Skipping husky install in CI'",
+    "vercel-build": "turbo run build --filter=web",
+    "pre-deploy": "./scripts/pre-deploy.sh",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "prettier": "^3.1.0",
     "turbo": "^1.11.0",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vercel": "^44.3.0"
   },
   "engines": {
     "node": ">=18.0.0",

@@ -16,13 +16,25 @@ export function ContentView({ content }: ContentViewProps) {
       // If content is a string, parse it
       const jsonContent = typeof content === 'string' ? JSON.parse(content) : content
       
-      return generateHTML(jsonContent, [
+      const rawHtml = generateHTML(jsonContent, [
         StarterKit.configure({
           heading: {
             levels: [2, 3]
           }
         })
       ])
+      
+      // Sanitize HTML to prevent XSS attacks
+      // Use dynamic import for browser-only code
+      if (typeof window !== 'undefined') {
+        const DOMPurify = require('dompurify')
+        return DOMPurify.sanitize(rawHtml, {
+          ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 's', 'h2', 'h3', 'ul', 'ol', 'li', 'blockquote', 'code', 'pre', 'a'],
+          ALLOWED_ATTR: ['href', 'target', 'rel'],
+          ALLOW_DATA_ATTR: false
+        })
+      }
+      return rawHtml
     } catch (error) {
       console.error('Error parsing content:', error)
       return '<p>Error displaying content</p>'

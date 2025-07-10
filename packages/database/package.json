@@ -5,7 +5,9 @@
   "types": "./src/index.ts",
   "scripts": {
     "generate": "supabase gen types typescript --local > src/types/supabase.ts",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "build": "echo 'No build needed for database package'",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.1"

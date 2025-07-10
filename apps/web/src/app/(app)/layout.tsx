@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { SiteHeader } from '@/components/site-header'
+import { ErrorBoundary } from '@/components/error-boundary'
 
 export default async function AppLayout({
   children,
@@ -20,7 +21,9 @@ export default async function AppLayout({
   return (
     <div className="relative flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </main>
     </div>
   )
 }

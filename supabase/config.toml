@@ -33,8 +33,6 @@ site_url = "http://localhost:3000"
 additional_redirect_urls = ["http://localhost:3000/**"]
 jwt_expiry = 3600
 enable_signup = true
-email = true
-double_confirm_changes = true
 enable_anonymous_sign_ins = false
 
 [auth.email]
@@ -57,13 +55,6 @@ enabled = true
 client_id = "env(LINKEDIN_CLIENT_ID)"
 secret = "env(LINKEDIN_CLIENT_SECRET)"
 redirect_uri = "http://localhost:54321/auth/v1/callback"
-
-[pooler]
-enabled = false
-port = 54329
-mode = "transaction"
-default_pool_size = 20
-max_client_conn = 100
 
 [realtime]
 enabled = true

@@ -3,6 +3,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
 import { SupabaseProvider } from './supabase-provider'
+import { NotificationsProvider } from '@/contexts/notifications-context'
+import { ToastProvider } from '@/components/ui/toast'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -20,7 +22,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <SupabaseProvider>
-        {children}
+        <NotificationsProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </NotificationsProvider>
       </SupabaseProvider>
     </QueryClientProvider>
   )

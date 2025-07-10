@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ltoc/ui'
 import { Database } from '@ltoc/database'
+import { Search, TrendingUp } from 'lucide-react'
 
 export default async function DashboardPage() {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -35,6 +36,12 @@ export default async function DashboardPage() {
         .limit(5)
     : { data: [] }
 
+  // Get popular searches
+  const { data: popularSearches } = await supabase
+    .from('popular_searches')
+    .select('*')
+    .limit(5)
+
   return (
     <div className="container py-8">
       <div className="mb-8">
@@ -43,6 +50,55 @@ export default async function DashboardPage() {
           Your role: <span className="capitalize">{profile?.role}</span>
         </p>
       </div>
+
+      {/* Quick Search */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Search className="h-5 w-5" />
+            Quick Search
+          </CardTitle>
+          <CardDescription>Find content across the platform</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form action="/search" method="get">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                name="q"
+                placeholder="Search content, tags, or authors..."
+                className="flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+              <button
+                type="submit"
+                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          
+          {popularSearches && popularSearches.length > 0 && (
+            <div className="mt-3">
+              <p className="text-xs text-muted-foreground mb-2 flex items-center gap-1">
+                <TrendingUp className="h-3 w-3" />
+                Trending searches:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {popularSearches.map((search: any) => (
+                  <a
+                    key={search.query}
+                    href={`/search?q=${encodeURIComponent(search.query)}`}
+                    className="text-xs bg-muted px-2 py-1 rounded-full hover:bg-muted/80"
+                  >
+                    {search.query}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card>
@@ -112,6 +168,12 @@ export default async function DashboardPage() {
                 className="block rounded-md border p-2 text-sm hover:bg-accent"
               >
                 Browse Content
+              </a>
+              <a
+                href="/search"
+                className="block rounded-md border p-2 text-sm hover:bg-accent"
+              >
+                Advanced Search
               </a>
               {canReview && (
                 <>

@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useSupabase } from '@/components/supabase-provider'
 import { Button, Input, Label, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@ltoc/ui'
+import { validationSchemas } from '@ltoc/utils'
+import { z } from 'zod'
 
 export default function SignupPage() {
   const [email, setEmail] = useState('')
@@ -22,12 +24,17 @@ export default function SignupPage() {
     setLoading(true)
 
     try {
+      // Validate inputs with Zod schemas
+      const validatedEmail = validationSchemas.email.parse(email)
+      const validatedPassword = validationSchemas.password.parse(password)
+      const validatedDisplayName = validationSchemas.displayName.parse(displayName)
+
       const { error } = await supabase.auth.signUp({
-        email,
-        password,
+        email: validatedEmail,
+        password: validatedPassword,
         options: {
           data: {
-            display_name: displayName,
+            display_name: validatedDisplayName,
             role: 'reader', // Default role for new users
           },
           emailRedirectTo: `${window.location.origin}/auth/callback`,
@@ -38,7 +45,11 @@ export default function SignupPage() {
 
       setSuccess(true)
     } catch (error: any) {
-      setError(error.message)
+      if (error instanceof z.ZodError) {
+        setError(error.errors[0].message)
+      } else {
+        setError(error.message)
+      }
     } finally {
       setLoading(false)
     }

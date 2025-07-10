@@ -6,7 +6,7 @@ import { useSupabase } from '@/components/supabase-provider'
 import { useUser } from '@/hooks/use-user'
 import { Button, Input, Label, Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ltoc/ui'
 import { Editor } from '@/components/editor/editor'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Users } from 'lucide-react'
 
 export default function CreateContentPage() {
   const router = useRouter()
@@ -91,6 +91,16 @@ export default function CreateContentPage() {
 
   return (
     <div className="container max-w-4xl py-8">
+      <div className="mb-6 flex justify-end">
+        <Button
+          variant="outline"
+          onClick={() => router.push('/content/collaborate')}
+          className="gap-2"
+        >
+          <Users className="h-4 w-4" />
+          Collaborate in Real-time
+        </Button>
+      </div>
       <Card>
         <CardHeader>
           <CardTitle>Create New Content</CardTitle>
